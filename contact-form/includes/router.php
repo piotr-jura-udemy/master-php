@@ -16,6 +16,7 @@ function getFilePath(string $uri, string $method): string {
 function notFound(): void {
   http_response_code(404);
   echo "404 Not Found";
+  exit;
 }
 
 function dispatch(string $uri, string $method): void {
