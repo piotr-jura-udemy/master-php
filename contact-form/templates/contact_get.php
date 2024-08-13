@@ -5,7 +5,7 @@
     <label>Name</label>
     <input type="text" name="name" />
     <label>Email</label>
-    <input type="email" name="email" />
+    <input type="text" name="email" />
     <label>Message</label>
     <textarea rows="4" name="message"></textarea>
     <button type="submit">Send Message</button>
