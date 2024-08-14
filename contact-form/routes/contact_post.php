@@ -12,7 +12,18 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   badRequest("Email field is invalid");
 }
 
-connectDb();
+$inserted = insertMessage(
+  connectDb(), 
+  name: $name, 
+  email: $email, 
+  message: $message
+);
 
-var_dump($email, $name, $message);die;
+if ($inserted) {
+  $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+  echo "Thank you, $safeName, for your message. It was stored.";
+  exit;
+}
+
+serverError('Could not store the message, sorry');
 
