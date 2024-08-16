@@ -2,6 +2,7 @@
   <h2>Leave a Public Note/Question</h2>
   <form method="POST">
     <!-- CSRF -->
+    <input type="hidden" name="csrfToken" value="<?=$data['csrfToken']?>" />
     <label>Name</label>
     <input type="text" name="name" />
     <label>Email</label>
