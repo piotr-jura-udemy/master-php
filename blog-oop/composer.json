@@ -1,0 +1,16 @@
+{
+    "name": "piotrjura/blog-oop",
+    "authors": [
+        {
+            "name": "Piotr Jura",
+            "email": "jura.piotrek@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {}
+}

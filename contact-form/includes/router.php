@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 const ALLOWED_METHODS = ['GET', 'POST'];
 const INDEX_URI = '';
 const INDEX_ROUTE = 'index';
