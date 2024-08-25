@@ -15,7 +15,7 @@ class View {
 
   protected static function renderTemplate(string $template, array $data): string {
     extract($data);
-    $path = dirname(__DIR__) . "/../app/Views/$template.php";
+    $path = dirname(__DIR__) . "/app/Views/$template.php";
 
     if (!file_exists($path)) {
       throw new RuntimeException("Error: Template file not found: $path");
@@ -32,7 +32,7 @@ class View {
     }
 
     extract([...$data, 'content' => $content]);
-    $path = dirname(__DIR__) . "/../app/Views/$template.php";
+    $path = dirname(__DIR__) . "/app/Views/$template.php";
 
     if (!file_exists($path)) {
       throw new RuntimeException("Error: Layout file not found: $path");
