@@ -7,6 +7,6 @@ return [
   ],
   'database' => [
     'driver' => 'sqlite',
-    'path' => __DIR__ . '/database/blog.sqlite'
+    'dbname' => __DIR__ . '/database/blog.sqlite'
   ]
 ];
