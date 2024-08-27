@@ -12,5 +12,8 @@
             "Core\\": "core/"
         }
     },
-    "require": {}
+    "require": {},
+    "scripts": {
+        "schema:load": "php bin/schema_load.php"
+    }
 }
