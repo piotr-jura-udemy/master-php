@@ -5,6 +5,7 @@ namespace Core;
 class ErrorHandler {
   public static function handleException(\Throwable $exception) {
     // 1) Log the error
+    static::logError($exception);
     // php bin/load_schema.php
     if (php_sapi_name() === 'cli') {
       static::renderCliError($exception);
@@ -32,6 +33,14 @@ class ErrorHandler {
       fwrite(STDERR, "\nStack trace:\n$trace\n");
     }
     exit(1);
+  }
+
+  private static function logError(\Throwable $exception): void {
+    $logMessage = static::formatErrorMessage(
+      $exception,
+      "[%s] Error: %s: %s in %s on line %d\n"
+    );
+    error_log($logMessage, 3, __DIR__ . '/../logs/error.log');
   }
 
   public static function handleError($level, $message, $file, $line) {
