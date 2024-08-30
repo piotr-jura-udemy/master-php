@@ -1,4 +1,13 @@
-<div>
-  <strong>Hello</strong>
-  <div>The message is: <?=$message?></div>
-</div>
+<h1>Welcome to My Blog</h1>
+<h2>Recent Posts</h2>
+
+<?php foreach($posts as $post): ?>
+  <article>
+    <h3>
+      <?= htmlspecialchars($post->title) ?>
+    </h3>
+    <p>
+      <?= htmlspecialchars(substr($post->content, 0, 150)) ?>...
+    </p>
+  </article>
+<?php endforeach; ?>
