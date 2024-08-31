@@ -47,9 +47,10 @@ class Database {
 
   public function fetch(string $sql, array $params = [], ?string $className = null): mixed {
     $stmt = $this->query($sql, $params);
-    return $className 
-      ? $stmt->fetch(PDO::FETCH_CLASS, $className)
-      : $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->setFetchMode(
+      $className ? PDO::FETCH_CLASS : PDO::FETCH_ASSOC, $className
+    );
+    return $stmt->fetch();
   }
 
   public function lastInsertId(): string|false {

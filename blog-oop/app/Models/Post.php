@@ -24,4 +24,12 @@ class Post extends Model {
       static::class
     );
   }
+
+  public static function incrementViews($id): void {
+    $db = App::get('database');
+    $db->query(
+      "UPDATE posts SET views = views + 1 WHERE id = ?",
+      [$id]
+    );
+  }
 }
