@@ -15,14 +15,26 @@ class Post extends Model {
   public $views;
   public $created_at;
 
-  public static function getRecent(int $limit) {
+  public static function getRecent(?int $limit = null, ?string $search = null) {
     /** @var \Core\Database $db */
     $db = App::get('database');
-    return $db->fetchAll(
-      "SELECT * FROM " . static::$table . " ORDER BY created_at DESC LIMIT ?",
-      [$limit],
-      static::class
-    );
+
+    $query = "SELECT * FROM " . static::$table;
+    $params = [];
+
+    if ($search !== null) {
+      $query .= " WHERE title LIKE ? OR content LIKE ?";
+      $params = ["%$search%", "%$search%"];
+    }
+
+    $query .= " ORDER BY created_at DESC";
+
+    if ($limit !== null) {
+      $query .= " LIMIT ?";
+      $params[] = $limit;
+    }
+
+    return $db->fetchAll($query, $params, static::class);
   }
 
   public static function incrementViews($id): void {

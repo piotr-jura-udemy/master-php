@@ -9,7 +9,17 @@ use Core\View;
 
 class PostController {
   public function index() {
-    return "All posts";
+    $search = $_GET['search'] ?? '';
+    $posts = Post::getRecent(5, $search);
+
+    return View::render(
+      template: 'post/index', 
+      data: [
+        'posts' => $posts,
+        'search' => $search
+      ],
+      layout: 'layouts/main'
+    );
   }
 
   public function show($id) {
