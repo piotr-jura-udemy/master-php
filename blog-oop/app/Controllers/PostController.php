@@ -10,13 +10,19 @@ use Core\View;
 class PostController {
   public function index() {
     $search = $_GET['search'] ?? '';
-    $posts = Post::getRecent(5, $search);
+    $page = $_GET['page'] ?? 1;
+    $limit = 1;
+
+    $posts = Post::getRecent($limit, $page, $search);
+    $total = Post::count($search);
 
     return View::render(
       template: 'post/index', 
       data: [
         'posts' => $posts,
-        'search' => $search
+        'search' => $search,
+        'currentPage' => $page,
+        'totalPages' => ceil($total / $limit)
       ],
       layout: 'layouts/main'
     );
