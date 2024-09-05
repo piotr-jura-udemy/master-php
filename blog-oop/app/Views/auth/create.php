@@ -1,5 +1,9 @@
 <h2>Login</h2>
 
+<?php if (isset($error)): ?>
+  <p style="color:red;"><?= $error ?></p>
+<?php endif; ?>
+
 <form action="/login" method="POST">
   <!-- CSRF -->
   <div>

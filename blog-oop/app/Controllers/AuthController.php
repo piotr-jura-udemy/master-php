@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Services\Auth;
+use Core\Router;
 use Core\View;
 
 class AuthController {
@@ -13,7 +15,21 @@ class AuthController {
   }
 
   public function store() {
-    var_dump($_POST);
-    die('form sent!');
+    // Todo: CSRF token
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Attempt auth
+    if (Auth::attempt($email, $password)) {
+      Router::redirect('/');
+    }
+
+    return View::render(
+      template: 'auth/create',
+      layout: 'layouts/main',
+      data: [
+        'error' => 'Invalid credentials'
+      ]
+    );
   }
 }
