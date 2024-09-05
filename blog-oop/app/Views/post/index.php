@@ -1,4 +1,3 @@
-<h1>Welcome to My Blog</h1>
 <h2>All Posts</h2>
 
 <form action="" method="GET">
