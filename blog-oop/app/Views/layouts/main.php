@@ -16,7 +16,7 @@
     <a href="/">Home</a>
     <a href="/posts">Posts</a>
     <?php if ($user): ?>
-      <a href="/logout">Logout</a>
+      <a href="/logout">Logout (<?= $user->email ?>)</a>
     <?php endif ?>
   </nav>
   <main>
