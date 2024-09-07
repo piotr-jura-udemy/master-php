@@ -18,6 +18,7 @@ class AuthController {
     // Todo: CSRF token
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $remember = isset($_POST['remember']) ? (bool)$_POST['remember'] : false;
 
     // Attempt auth
     if (Auth::attempt($email, $password)) {
