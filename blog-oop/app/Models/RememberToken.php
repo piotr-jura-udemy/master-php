@@ -14,6 +14,13 @@ class RememberToken extends Model {
   public string $expires_at;
   public string $created_at;
 
+  public function rotate(): static {
+    $this->token = static::generateToken();
+    $this->expires_at = static::getExpiryDate();
+    $this->save();
+    return $this;
+  }
+
   private static function generateToken(): string {
     return bin2hex(random_bytes(32));
   }

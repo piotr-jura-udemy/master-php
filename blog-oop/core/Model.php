@@ -1,10 +1,10 @@
 <?php
-namespace Core;
 
-use PDO;
+namespace Core;
 
 abstract class Model {
   protected static $table;
+  public $id;
 
   public static function all(): array {
     $db = App::get('database');
@@ -26,5 +26,30 @@ abstract class Model {
     $sql = "INSERT INTO " . static::$table . " ($columns) VALUES ($placeholders)";
     $db->query($sql, array_values($data));
     return static::find($db->lastInsertId());
+  }
+
+  public function save(): static {
+    $db = App::get('database');
+    $data = get_object_vars($this);
+
+    if (!isset($this->id)) {
+      unset($data['id']);
+      return static::create($data);
+    }
+
+    unset($data['id']);
+    $setParts = array_map(
+      fn($column) => "$column = ?", 
+      array_keys($data)
+    );
+    $sql = "UPDATE " 
+      . static::$table 
+      . " SET " 
+      . implode(', ', $setParts) 
+      . " WHERE id = ?";
+    $params = array_values($data);
+    $params[] = $this->id;
+    $db->query($sql, $params);
+    return $this;
   }
 }
