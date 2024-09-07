@@ -9,7 +9,7 @@ class RememberToken extends Model {
   protected static string $table = 'remember_tokens';
   public const TOKEN_LIFETIME = 30 * 24 * 60 * 60;
 
-  public ?int $id;
+  public $id;
   public int $user_id;
   public string $token;
   public string $expires_at;

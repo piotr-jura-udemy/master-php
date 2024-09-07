@@ -6,7 +6,7 @@ use Core\App;
 use Core\Model;
 
 class Comment extends Model {
-  protected static $table = 'comments';
+  protected static string $table = 'comments';
 
   public $id;
   public $content;

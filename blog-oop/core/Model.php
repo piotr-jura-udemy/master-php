@@ -3,7 +3,7 @@
 namespace Core;
 
 abstract class Model {
-  protected static $table;
+  protected static string $table;
   public $id;
 
   public static function all(): array {

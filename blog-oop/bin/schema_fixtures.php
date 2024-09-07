@@ -32,6 +32,7 @@ $db = App::get('database');
 $db->query("DELETE FROM comments");
 $db->query("DELETE FROM posts");
 $db->query("DELETE FROM users");
+$db->query("DELETE FROM remember_tokens");
 
 $db->query(
   "DELETE FROM sqlite_sequence WHERE name IN ('users', 'posts', 'comments')"

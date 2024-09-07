@@ -21,7 +21,7 @@ class AuthController {
     $remember = isset($_POST['remember']) ? (bool)$_POST['remember'] : false;
 
     // Attempt auth
-    if (Auth::attempt($email, $password)) {
+    if (Auth::attempt($email, $password, $remember)) {
       Router::redirect('/');
     }
 

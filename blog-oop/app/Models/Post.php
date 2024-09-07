@@ -6,7 +6,7 @@ use Core\App;
 use Core\Model;
 
 class Post extends Model {
-  protected static $table = 'posts';
+  protected static string $table = 'posts';
 
   public $id;
   public $user_id;
