@@ -2,19 +2,10 @@
 
 namespace App\Services;
 
-class Csrf {
+class CSRF {
   private const TOKEN_LENGTH = 32;
-  private const TOKEN_LIFETIME = 60 * 30;
-  private const TOKEN_FIELD_NAME = '_token';
-
-  public static function generateToken(): string {
-    $token = bin2hex(random_bytes(static::TOKEN_LENGTH));
-    $_SESSION['csrf_token'] = [
-      'token' => $token,
-      'expires' => time() + static::TOKEN_LIFETIME
-    ];
-    return $token;
-  }
+  private const TOKEN_LIFETIME = 30 * 60;
+  public const TOKEN_FIELD_NAME = '_token';
 
   public static function getToken(): string {
     if (
@@ -26,7 +17,7 @@ class Csrf {
     return $_SESSION['csrf_token']['token'];
   }
 
-  public static function verify(?string $token): bool {
+  public static function verify(?string $token = null): bool {
     $method = $_SERVER['REQUEST_METHOD'];
     if (in_array($method, ['GET', 'HEAD', 'OPTIONS'])) {
       return true;
@@ -40,6 +31,15 @@ class Csrf {
     }
 
     return false;
+  }
+
+  private static function generateToken(): string {
+    $token = bin2hex(random_bytes(static::TOKEN_LENGTH));
+    $_SESSION['csrf_token'] = [
+      'token' => $token,
+      'expires' => time() + static::TOKEN_LIFETIME
+    ];
+    return $token;
   }
 
   private static function isTokenExpired(): bool {

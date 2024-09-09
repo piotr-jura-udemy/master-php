@@ -19,6 +19,12 @@ class Router {
     exit;
   }
 
+  public static function pageExpired(): void {
+    http_response_code(419);
+    echo View::render('errors/419');
+    exit;
+  }
+
   public function dispatch(string $uri, string $method): string {
     $route = $this->findRoute($uri, $method);
 
