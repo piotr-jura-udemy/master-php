@@ -7,7 +7,20 @@
 </article>
 
 <section>
-  <h2>Comments</h2>
+  <h2 id="comments">Comments</h2>
+
+  <?php if($user): ?>
+    <form action="/posts/<?= $post->id ?>/comments" method="POST">
+      <?= csrf_token() ?>
+      <textarea name="content" required rows="3"></textarea>
+      <button type="submit">Add Comment</button>
+    </form>
+  <?php else: ?>
+    <p>
+      <a href="/login">Login to comment.</a>
+    </p>
+  <?php endif ?>
+
   <?php foreach($comments as $comment): ?>
     <div>
       <p>

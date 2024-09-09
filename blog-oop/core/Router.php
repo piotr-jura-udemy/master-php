@@ -19,6 +19,12 @@ class Router {
     exit;
   }
 
+  public static function unauthorized(): void {
+    http_response_code(401);
+    echo View::render('errors/401');
+    exit;
+  }
+
   public static function pageExpired(): void {
     http_response_code(419);
     echo View::render('errors/419');
