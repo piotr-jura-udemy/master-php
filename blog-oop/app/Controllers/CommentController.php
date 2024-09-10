@@ -13,15 +13,10 @@ class CommentController {
       Router::pageExpired();
     }
 
-    $user = Auth::user();
-    if (!$user) {
-      Router::unauthorized();
-    }
-
     $content = $_POST['content'];
     Comment::create([
       'post_id' => $id,
-      'user_id' => $user->id,
+      'user_id' => Auth::user()->id,
       'content' => $content
     ]);
 

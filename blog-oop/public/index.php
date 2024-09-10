@@ -13,8 +13,6 @@ $router = new Router();
 
 require_once __DIR__ . '/../routes.php';
 
-View::share('user', Auth::user());
-
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_SERVER['REQUEST_METHOD'];
 
