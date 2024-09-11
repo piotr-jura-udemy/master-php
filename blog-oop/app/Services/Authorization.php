@@ -27,7 +27,9 @@ class Authorization {
     }
 
     return match($action) {
-      'dashboard' => in_array($user->role, ['admin', 'superadmin']),
+      'dashboard' => in_array(
+        $user->role, ['admin', 'superadmin']
+      ),
       'edit_post', 'delete_post' => $resource instanceof Post && (($user->id === $resource->user_id) || in_array($user->role, ['admin', 'superadmin'])),
       'comment', 'create_post' => true,
       default => false

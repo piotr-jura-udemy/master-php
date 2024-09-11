@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\Authorization;
 use Core\View;
 use App\Services\CSRF;
 
@@ -17,4 +18,10 @@ if (!function_exists('csrf_token')) {
       <input type="hidden" name="$tokenField" value="$token" />
     TAG;
   }
+}
+
+if (!function_exists('check')) {
+  function check(string $action, mixed $resource = null): bool {
+    return Authorization::check($action, $resource);
+  } 
 }
