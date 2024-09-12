@@ -12,6 +12,7 @@ class PostController {
   public function index() {
     // + Pagination
     // + Search
+    Authorization::verify('dashboard');
     return View::render(
       template: 'admin/post/index',
       layout: 'layouts/admin',
@@ -20,6 +21,7 @@ class PostController {
   }
 
   public function create() {
+    Authorization::verify('create_post');
     return View::render(
       template: 'admin/post/create',
       layout: 'layouts/admin'
@@ -38,10 +40,12 @@ class PostController {
   }
 
   public function edit($id) {
+    $post = Post::find($id);
+    Authorization::verify('edit_post', $post);
     return View::render(
       template: 'admin/post/edit',
       layout: 'layouts/admin',
-      data: ['post' => Post::find($id)]
+      data: ['post' => $post]
     );
   }
 
@@ -59,6 +63,7 @@ class PostController {
     // Post::findOrFail($id)
     // + Able to do by yourself
     $post = Post::find($id);
+    Authorization::verify('delete_post', $post);
     $post->delete();
     Router::redirect('/admin/posts');
   }
