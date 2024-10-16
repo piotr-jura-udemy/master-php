@@ -1,0 +1,20 @@
+{
+    "name": "piotrjura/file-sharing",
+    "authors": [
+        {
+            "name": "Piotr Jura",
+            "email": "jura.piotrek@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {},
+    "scripts": {
+        "schema:load": "php bin/schema_load.php",
+        "schema:fixtures": "php bin/schema_fixtures.php"
+    }
+}
