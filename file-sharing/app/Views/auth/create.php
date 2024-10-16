@@ -31,6 +31,10 @@
           </form>
         </div>
       </div>
+
+      <div class="mt-4 text-center">
+        Don't have an account? <a href="/register">Register</a>
+      </div>
     </div>
   </div>
 </div>
