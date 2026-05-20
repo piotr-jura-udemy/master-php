@@ -2,9 +2,9 @@
 
 $secret = "magic";
 $attempts = 0;
-$maxAttemps = 5;
+$maxAttempts = 5;
 
-while ($attempts < $maxAttemps) {
+while ($attempts < $maxAttempts) {
   echo "Guess the password: ";
   $guess = trim(fgets(STDIN));
   $attempts++;
@@ -12,9 +12,9 @@ while ($attempts < $maxAttemps) {
   if ($guess == $secret) {
     echo "Correct! You've unlocked the treasure! 💎\n";
     break;
-  } elseif ($attempts == $maxAttemps) {
-    echo "Out of attempts! The treseaure remains locked. 🔒 \n";
+  } elseif ($attempts == $maxAttempts) {
+    echo "Out of attempts! The treasure remains locked. 🔒 \n";
   } else {
-    echo "Wrong! Try again. Attempts left: " . ($maxAttemps - $attempts) . "\n";
+    echo "Wrong! Try again. Attempts left: " . ($maxAttempts - $attempts) . "\n";
   }
 }

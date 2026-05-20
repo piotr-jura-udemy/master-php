@@ -21,4 +21,4 @@ var_dump(
 
 $number = 1234.894545;
 
-echo "Fromatted: " . number_format($number, 2, '.', ',');
+echo "Formatted: " . number_format($number, 2, '.', ',');
