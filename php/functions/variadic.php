@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-function sum(int ...$numbers): int {
+function sum(int ...$numbers): int
+{
   $sum = 0;
   var_dump($numbers);
   foreach ($numbers as $number) {
@@ -19,7 +20,8 @@ $numbers = [1, 2, 3];
 
 var_dump(sum(...$numbers));
 
-function introduceTeam(string $teamName, string ...$members): void {
+function introduceTeam(string $teamName, string ...$members): void
+{
   echo "Team: $teamName\n";
   var_dump($members);
   echo "Members: " . implode(", ", $members) . "\n";
@@ -27,7 +29,7 @@ function introduceTeam(string $teamName, string ...$members): void {
 
 introduceTeam("A Team", "John", "Mr T");
 
-$members = ["Harry", "Johhny", "Joe"];
+$members = ["Harry", "Johnny", "Joe"];
 
 introduceTeam("B Team", ...$members);
 introduceTeam("C Team", "John", "Mr T", ...$members);
